@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/login.css"/> <!-- CSS和JS的根目錄都在static -->
+<script type="text/javascript" src="js/login.js"></script> <!-- CSS和JS的根目錄都在static -->
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div th:include="components/header"></div> 
+  <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" th:action="@{/loginService/login}" th:object="${memberBean}" 
+					method="post">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" th:field="*{memberid}" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"/>
+                <input type="password" th:field="*{password}" id="inputPassword" class="form-control" placeholder="Password" required="required"/>
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me</input>
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form><!-- /form -->
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+</body>
+</html>

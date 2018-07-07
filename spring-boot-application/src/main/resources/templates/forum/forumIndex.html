@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+<script src="ckeditor/ckeditor.js"></script>
+</head>
+<body>
+	<div th:include="components/header"></div> 
+	
+	<div class="container">
+	<button type="button" class="btn" th:text="#{forum.create}"></button>
+	
+	<!-- 留言列表 -->
+	<div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th th:text="#{forum.messageNo}"></th>
+				<th th:text="#{forum.memberid}"></th>
+				<th th:text="#{forum.title}"></th>
+				<th th:text="#{forum.postdate}"></th>
+				<th th:text="#{forum.beclicked}"></th>							
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="collect,iterStat : ${messagelist}">
+				
+				<td><a th:href="@{'/forum/'+${collect.messageno}}" ><span th:text="${collect.messageno}"></span></a></td>
+				<td th:text="${collect.memberid}"></td>
+				<td th:text="${collect.title}"></td>
+				<td th:text="${collect.postTime}"></td>
+				<td th:text="${collect.beclicked}"></td>
+			</tr>
+		</tbody>
+	  </table>
+	</div>
+	<!-- 留言列表end -->
+	
+	<!-- 留言框start -->
+	<div>
+		<form id="addmessageform" th:action="@{/forum/addmessage}" th:object="${messageform}" 
+		method="post">
+		<!-- 用j query 抓帳號的值 -->
+			<input id="accounthere" type="hidden" th:if="${session.LoginOK!=null}" th:value="${memberbean.memberid}" />
+			<input id="giveaccount" type="hidden" th:field="*{memberid}"/>
+		  <div class="form-group">
+		    <label for="FormControlInput1" th:text="#{addforum.title}"></label>
+		    <input type="text" class="form-control" id="FormControlInput1" th:field="*{title}" placeholder="Title"/>
+		  </div>
+		  <div class="form-group">
+		    <label for="content" th:text="#{addforum.message}"></label>
+		    <textarea class="form-control" name="content" id="content" rows="10" cols="80" th:field="*{mymessage}"></textarea>
+		  	<script>
+			CKEDITOR.replace( 'content', {});
+			</script>
+		  </div>
+		  <div class="form-group row">
+		    <div class="col-sm-10">
+		      <button id="submitbutton" type="submit" class="btn btn-primary" th:text="#{addforum.submit}" onclick = 'processData()'></button>
+		    </div>
+		  </div>
+		</form>
+			
+	</div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="js/forum/forum.js"></script> 
+</body>
+</html>

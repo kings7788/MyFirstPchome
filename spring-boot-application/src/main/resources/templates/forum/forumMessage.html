@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+<div th:include="/components/header2"></div> 
+	<div class="container">
+		<br/><br/>
+		
+		<div class="card">
+		  <h5 class="card-header" th:text="${linkmessage.messageno}+#{linkmessage.messageno}+#{addforum.message}"></h5>
+		  <div class="card-body">
+		  	<input id="thismessageNo" type="hidden" th:value="${linkmessage.messageno}"/> 
+		    <h5 class="card-title" th:text="${linkmessage.title}"></h5>
+		    <p class="card-text" th:text="${linkmessage.mymessage}"></p>
+		    <p class="card-text" th:text="${linkmessage.postTime}"></p>
+		    
+		    <!-- <a href="#" class="btn btn-primary" th:text="#{forum.message.reply}"></a> -->
+		  </div>
+		</div>
+		<hr/>
+		<div th:each="collect,iterStat : ${replymessage}">
+		<div class="card" >
+		  <div class="card-body">
+		    <div class="card-body"   
+		    			th:text="${collect.memberid}+#{reply.talk}+
+		    			${collect.replymessage}"></div>
+		    <p style="float:right" th:text="${collect.postTime}"></p>
+		  </div>
+		</div>
+		</div>
+		
+		<div id="outsidereply" class="form-group"></div>
+		
+		<div class="card">
+		  <div class="card-body">
+		    <textarea id="replyMsg" class="form-control" cols="5"></textarea>
+		    <br/>
+		    <button id="replyButton" type="button" class="btn btn-primary" th:text="#{forum.message.reply}"></button>
+		  </div>
+		</div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="../js/forum/messagereply.js"></script> 
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<!-- Custom styles for this template -->
+    <style>
+      body {
+        padding-top: 54px;
+      }
+      @media (min-width: 992px) {
+        body {
+          padding-top: 56px;
+        }
+      }
+    </style>
+
+</head>
+<body>
+<!-- 加載header -->
+<div th:include="components/header"></div> 
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1><span class="mt-5" th:if="${session.LoginOK!=null}" th:text="${memberbean.memName}"></span>
+          <span class="mt-5" th:if="${session.LoginOK!=null}" th:text="#{index.hello}"></span></h1>
+          <h1 class="mt-5" th:unless="${session.LoginOK!=null}" th:text="#{index.boot}"></h1>
+          <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
+          <ul class="list-unstyled">
+            <li><h1><a th:unless="${session.LoginOK!=null}" th:href="@{/register}" th:text="#{index.register}"></a></h1></li>
+            <li><h1><a th:unless="${session.LoginOK!=null}" th:href="@{/login}" th:text="#{index.login}"></a></h1></li>
+			<li><h1><a th:href="@{/forum}" th:if="${session.LoginOK != null }" th:text="#{index.forum}"></a></h1></li>          
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<!--     Bootstrap core JavaScript -->
+<!--     <script src="vendor/jquery/jquery.min.js"></script> -->
+<!--     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+
+ 
+
+  </body>
+</html>
