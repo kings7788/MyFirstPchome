@@ -15,4 +15,33 @@ public class ProfileService {
 		Member memberState = memberRepository.save(memberbean);
 		return memberState;
 	}
+	
+	public int checkColumnfillout(Member memberbean) {
+		int updatecount = 4; 	
+		System.out.println("check method  -------------" + memberbean);
+		if(memberbean!=null&&memberbean.getMemberid()!=null) {
+			
+			Member originalprofile = memberRepository.findbyId(memberbean.getMemberid());
+			if(memberbean.getMemName()==""||memberbean.getMemName()==null) {
+				memberbean.setMemName(originalprofile.getMemName());
+				updatecount--;
+			}
+			if(memberbean.getPassword()==""||memberbean.getPassword()==null) {
+				memberbean.setPassword(originalprofile.getPassword());
+				updatecount--;
+			}
+			if(memberbean.getSex()==null) {
+				memberbean.setSex(originalprofile.getSex());
+				updatecount--;
+			}
+			if(memberbean.getBirth()==null) {
+				memberbean.setBirth(originalprofile.getBirth());
+				updatecount--;
+			}
+		}
+		
+		return updatecount;
+		
+	
+	}
 }

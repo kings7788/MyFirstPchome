@@ -4,7 +4,8 @@
 <meta charset="UTF-8"/>
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+<link rel="stylesheet" href="fontawesome-5.1.0/css/all.css" />
+
 <script src="ckeditor/ckeditor.js"></script>
 </head>
 <body>
@@ -22,7 +23,8 @@
 				<th th:text="#{forum.memberid}"></th>
 				<th th:text="#{forum.title}"></th>
 				<th th:text="#{forum.postdate}"></th>
-				<th th:text="#{forum.beclicked}"></th>							
+				<th th:text="#{forum.beclicked}"></th>
+				<th></th>							
 			</tr>
 		</thead>
 		<tbody>
@@ -33,6 +35,8 @@
 				<td th:text="${collect.title}"></td>
 				<td th:text="${collect.postTime}"></td>
 				<td th:text="${collect.beclicked}"></td>
+				<td><i class="far fa-edit fa-sm"></i></td>
+				
 			</tr>
 		</tbody>
 	  </table>
@@ -69,5 +73,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="js/forum/forum.js"></script> 
+<script src="js/forum/updateicon.js"></script> 
 </body>
 </html>

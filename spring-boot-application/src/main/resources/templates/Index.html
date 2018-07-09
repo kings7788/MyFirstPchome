@@ -32,7 +32,8 @@
           <ul class="list-unstyled">
             <li><h1><a th:unless="${session.LoginOK!=null}" th:href="@{/register}" th:text="#{index.register}"></a></h1></li>
             <li><h1><a th:unless="${session.LoginOK!=null}" th:href="@{/login}" th:text="#{index.login}"></a></h1></li>
-			<li><h1><a th:href="@{/forum}" th:if="${session.LoginOK != null }" th:text="#{index.forum}"></a></h1></li>          
+			<li><h1><a th:href="@{/forum}" th:if="${session.LoginOK != null }" th:text="#{index.forum}"></a></h1></li> 
+			<li><h1><a th:href="@{/membercenter}" th:if="${session.LoginOK != null }" th:text="${memberbean.memName}+#{memberbean.update}"></a></h1></li> 
           </ul>
         </div>
       </div>

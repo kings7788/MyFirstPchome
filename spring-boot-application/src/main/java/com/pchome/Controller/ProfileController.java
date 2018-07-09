@@ -30,13 +30,16 @@ public class ProfileController {
 		model.addAttribute("memberProfile",new Member());
 		return "member/profile";
 	}
+	//修改會員資料
 	@RequestMapping(value="/updateMember",method=RequestMethod.POST)
-	public @ResponseBody String updateProfile(@ModelAttribute("memberProfile") Member member
-			,HttpSession session) {
+	public String updateProfile(@ModelAttribute("memberProfile") Member member
+			,HttpSession session,Map<String,Object> map) {
 		Member membersession = (Member) session.getAttribute("LoginOK");
 		member.setMemberid(membersession.getMemberid());
-		System.out.println("update method ======member==>"+member);
+		int updateCol = profileService.checkColumnfillout(member);
+		System.out.println("update method ======member==>"+member + "  update  :"+updateCol+" ");
 		profileService.updateMethod(member);
-		return "success";
+		map.put("memberbean", membersession);
+		return "redirect:/index";
 	}
 }

@@ -65,4 +65,14 @@ public class ForumController {
 		map.put("replyMsgAdded", replyMsgAdded);
 		return map;
 	}
+	
+	@RequestMapping(value="/delmsg",method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String,Object> delMsg(@RequestParam("msgData") String msg,//取得回覆的訊息
+			  						 @RequestParam("msgNo") String msgid,//取得要回覆的主題
+								     HttpSession session){
+		Member membersession = (Member) session.getAttribute("LoginOK");  // 取得回覆人的帳號
+		Map<String,Object> map = new HashMap<String, Object>();
+		return map;
+	}
 }
