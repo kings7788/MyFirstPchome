@@ -20,7 +20,7 @@ public class RegisterController {
 	
 	
 	@RequestMapping(value = "/saveMember", method = RequestMethod.POST)
-    public String saveStudent(@ModelAttribute("memberBeanreg") Member member, BindingResult errors, Model model) {
+    public String saveStudent(@ModelAttribute("memberBeanreg") Member member) {
         System.out.println(member);
         registerService.registerMethod(member);
 		return "index";
