@@ -21,7 +21,7 @@
 					<div class="form-group col-md-6">
 						<div class="controls">
 							<label th:text="#{profile.account}"></label>
-							<p th:text="${memberbean.memberid}"></p>
+							<p th:text="${session.LoginOK.memberid}"></p>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
@@ -36,7 +36,7 @@
 						<div class="controls">
 							<small><label th:text="#{profile.name}"></label></small>
 							<input type="text" class="form-control" id="name"
-								th:value="${memberbean.memName}" th:field="*{memName}" />
+								th:value="${session.LoginOK.memName}" th:field="*{memName}" />
 							
 						</div>
 					</div>
@@ -45,7 +45,7 @@
 						<div class="controls">
 							<small><label th:text="#{profile.sex}"></label></small>
 							<input type="text" class="form-control" id="sex"
-								th:field="*{sex}" th:value="${memberbean.sex}" />
+								th:field="*{sex}" th:value="${session.LoginOK.sex}" />
 						</div>
 					</div>
 
@@ -53,7 +53,7 @@
 						<div class="controls">
 							<small><label th:text="#{profile.birth}"></label></small>
 							<input type="date" class="form-control" id="birth"
-								th:field="*{birth}" th:value="${memberbean.birth}" />
+								th:field="*{birth}" th:value="${session.LoginOK.birth}" />
 						</div>
 					</div>
 

@@ -44,7 +44,7 @@
             <span th:unless="${session.LoginOK!=null}" th:text="#{index.login}"></span></a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" th:href="@{/membercenter/p}" >
+            <a class="nav-link" th:href="@{/membercenter}" >
             <span th:if="${session.LoginOK!=null}" th:text="${memberbean.memName}"></span></a>
             </li>
             <li class="nav-item">

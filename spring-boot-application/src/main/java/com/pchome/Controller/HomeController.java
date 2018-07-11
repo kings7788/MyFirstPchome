@@ -21,7 +21,7 @@ public class HomeController {
 	@Autowired
 	ForumService forumService;
 	
-	@RequestMapping("/index")
+	@RequestMapping({"/","/index"})
 	public String homepage(HttpSession session,Map<String,Object> map) {
 		Member membersession = (Member) session.getAttribute("LoginOK");
 		map.put("memberbean", membersession);

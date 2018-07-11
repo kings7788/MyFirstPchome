@@ -48,7 +48,7 @@
 		<form id="addmessageform" th:action="@{/forum/addmessage}" th:object="${messageform}" 
 		method="post">
 		<!-- 用j query 抓帳號的值 -->
-			<input id="accounthere" type="hidden" th:if="${session.LoginOK!=null}" th:value="${memberbean.memberid}" />
+			<input id="accounthere" type="hidden" th:if="${session.LoginOK!=null}" th:value="${session.LoginOK.memberid}" />
 			<input id="giveaccount" type="hidden" th:field="*{memberid}"/>
 		  <div class="form-group">
 		    <label for="FormControlInput1" th:text="#{addforum.title}"></label>
