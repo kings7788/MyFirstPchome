@@ -6,7 +6,7 @@ $(document).ready(function(){
 		var data = { msgData : msgData , msgNo : msgNo}
 		$.ajax({
 			type:"POST",
-			url: "/forum/reply" ,
+			url: "/crud/forum/reply" ,
 			data: data,
 			timeout:60000,
 			success:function(data,result){

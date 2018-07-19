@@ -21,13 +21,13 @@ public class HomeController {
 	@Autowired
 	ForumService forumService;
 	
-	@RequestMapping({"/","/index"})
-	public String homepage(HttpSession session,Map<String,Object> map) {
-		Member membersession = (Member) session.getAttribute("LoginOK");
-		map.put("memberbean", membersession);
-		System.out.println("=============="+membersession);
-		return "index";
-	}
+//	@RequestMapping({"/","/index"})
+//	public String homepage(HttpSession session,Map<String,Object> map) {
+//		Member membersession = (Member) session.getAttribute("LoginOK");
+//		map.put("memberbean", membersession);
+//		System.out.println("=============="+membersession);
+//		return "index";
+//	}
 	
 	@RequestMapping("/register")
 	public String register(Model model) {

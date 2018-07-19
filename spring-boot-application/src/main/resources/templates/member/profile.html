@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<div th:include="/components/header2"></div>
+		<div th:include="/components/header"></div>
 	
 	<div class="container"><!-- Page Content -->
 	
@@ -36,7 +36,7 @@
 						<div class="controls">
 							<small><label th:text="#{profile.name}"></label></small>
 							<input type="text" class="form-control" id="name"
-								th:value="${session.LoginOK.memName}" th:field="*{memName}" />
+								th:value="${memberbean.memName}" th:field="*{memName}" />
 							
 						</div>
 					</div>
