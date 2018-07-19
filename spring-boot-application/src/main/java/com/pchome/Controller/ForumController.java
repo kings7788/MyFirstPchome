@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.pchome.Entity.Member;
 import com.pchome.Entity.Message;
@@ -58,7 +59,8 @@ public class ForumController {
 	@ResponseBody
 	public Map<String,Object> replyMsg(@RequestParam("msgData") String msg,//取得回覆的訊息
 									   @RequestParam("msgNo") String msgid,//取得要回覆的主題
-									   HttpSession session) {
+									   HttpSession session
+									   ) {
 		Member membersession = (Member) session.getAttribute("LoginOK");  // 取得回覆人的帳號
 		Map<String,Object> map = new HashMap<String, Object>();
 		ReplyMessage replyMsgAdded = replyService.addReplyMsg(msg, membersession.getMemberid(), Integer.parseInt(msgid));

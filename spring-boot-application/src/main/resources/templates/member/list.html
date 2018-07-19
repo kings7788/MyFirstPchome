@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 引入抽取的topbar -->
+	<!-- 模板名: 會使用thymeleaf的前後墜配置規則進行解析 -->
+	<div th:insert="~{header::topbar}"></div>
+	<!-- 留言列表 -->
+	<div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th th:text="#{forum.messageNo}"></th>
+				<th th:text="#{forum.memberid}"></th>
+				<th th:text="#{forum.title}"></th>
+				<th th:text="#{forum.postdate}"></th>
+				<th th:text="#{forum.beclicked}"></th>
+				<th></th>							
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="collect,iterStat : members">
+				
+				<td></td>
+				<td th:text="${collect.memberid}"></td>
+				<td th:text="${collect.memName}"></td>
+				<td th:text="${collect.birth}"></td>
+				<td></td>
+				<td><i class="far fa-edit fa-sm"></i></td>
+				
+			</tr>
+		</tbody>
+	  </table>
+	</div>
+	<!-- 留言列表end -->
+</body>
+</html>
