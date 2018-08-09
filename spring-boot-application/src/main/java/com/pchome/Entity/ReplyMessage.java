@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table(name="replymessage")
+@Table(name="replymessage2")
 public class ReplyMessage {
 	@Id
 	private Integer replyno;

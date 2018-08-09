@@ -2,31 +2,39 @@ package com.pchome.Entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 @Embeddable
 public class CompoundKey implements Serializable {
-
-	private String userId;
-	private String accountId;
+	
+	@Column(name="USER_ID")
+	private Long userId;
+	@Column(name="ACCOUNT_ID")
+	private Integer accountId;
 	
 	public CompoundKey() {
 		super();
 	}
-	public CompoundKey(String userId, String accountId) {
+	@Override
+	public String toString() {
+		return "CompoundKey [userId=" + userId + ", accountId=" + accountId + "]";
+	}
+	
+	public CompoundKey(Long userId, Integer accountId) {
 		super();
 		this.userId = userId;
 		this.accountId = accountId;
 	}
-	public String getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	public String getAccountId() {
+	public Integer getAccountId() {
 		return accountId;
 	}
-	public void setAccountId(String accountId) {
+	public void setAccountId(Integer accountId) {
 		this.accountId = accountId;
 	}
 	@Override
