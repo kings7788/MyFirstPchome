@@ -6,6 +6,7 @@ import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,9 +25,9 @@ public class TestController {
 		
 		@GetMapping("/testmail")
 		@ResponseBody
-		public String testMail() throws MessagingException, IOException {
+		public String testMail(Model model) throws MessagingException, IOException {
 			mail.sendMail("ooo", "kings86170@gmail.com", null, "測試郵件", "<a href='https://tw.yahoo.com/'>yahoo</a>", null, null);
-			
+			model.addAttribute("", "");
 			return "mail success";
 		}
 }
