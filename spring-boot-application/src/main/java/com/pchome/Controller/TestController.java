@@ -29,8 +29,6 @@ public class TestController {
 			mail.sendMail("ooo", "kings86170@gmail.com", null, "測試郵件", "<a href='https://tw.yahoo.com/'>yahoo</a>", null, null);
 			model.addAttribute("", "");
 			model.addAttribute("abc", "def");
-			model.addAttribute("", "");
-			model.addAttribute("abc", "def");
 			return "mail success";
 		}
 }
