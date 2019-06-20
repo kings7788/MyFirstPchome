@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.microsoft.sqlserver.jdbc.StringUtils;
+//import com.microsoft.sqlserver.jdbc.StringUtils;
 import com.pchome.Entity.Member;
 import com.pchome.Service.LoginService;
 

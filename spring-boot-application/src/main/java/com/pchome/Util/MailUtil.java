@@ -1,6 +1,8 @@
 package com.pchome.Util;
 
 import java.io.IOException;
+import java.security.Security;
+import java.util.Date;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -31,6 +33,53 @@ public class MailUtil {
      * @throws MessagingException
      * @throws IOException
      */
+	@SuppressWarnings("restriction")
+	public static void main(String[] args) throws Exception {
+        // TODO code application logic here
+        Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+        final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+        // Get a Properties object
+        Properties props = System.getProperties();
+        props.setProperty("mail.smtp.host", "smtp.gmail.com");
+        props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
+        props.setProperty("mail.smtp.socketFactory.fallback", "false");
+        props.setProperty("mail.smtp.port", "465");
+        props.setProperty("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.auth", "true");
+        final String username = "bryant05053";
+        final String password = "pca05053rd";
+        Session session = Session.getDefaultInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        // -- Create a new message --
+        Message msg = new MimeMessage(session);
+
+        // -- Set the FROM and TO fields --
+        msg.setFrom(new InternetAddress(username + "@gmail.com"));
+        msg.setRecipients(Message.RecipientType.TO,
+                InternetAddress.parse("kings86170@gmail.com", false));
+        msg.setSubject("Hello");
+        msg.setText("How are you");
+        msg.setSentDate(new Date());
+        
+        //整封邮件的MINE消息体
+        MimeMultipart msgMultipart = new MimeMultipart("mixed");//混合的组合关系
+       
+        //html代码部分
+        MimeBodyPart htmlPart = new MimeBodyPart();
+        msgMultipart.addBodyPart(htmlPart);
+        //html代码
+        String content = "<h1>wtf<h1><hr><h2>你好</h2>";
+        htmlPart.setContent(content, "text/html;charset=utf-8");
+        msg.setContent(msgMultipart);
+        
+        Transport.send(msg);
+
+        System.out.println("Message sent.");
+    }
     public void sendMail(String senderName, String to, String cc, String subject, String content, byte[][] bytes, String[] names) throws MessagingException, IOException {
 
         // 属性对象
@@ -89,7 +138,7 @@ public class MailUtil {
         // 开启debug调试 ，打印信息
         properties.setProperty("mail.debug", "false");
         // 发送服务器需要身份验证
-       // properties.setProperty("mail.smtp.auth", mailConfig.getAuth());
+        properties.setProperty("mail.smtp.auth", "true");
         // 发送服务器端口，可以不设置，默认是25
         properties.setProperty("mail.smtp.port", "587");
         // 发送邮件协议名称

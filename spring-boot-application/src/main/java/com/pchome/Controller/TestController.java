@@ -7,9 +7,13 @@ import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pchome.Util.Base64ImgUtil;
 import com.pchome.Util.MailUtil;
+
 
 @Controller
 public class TestController {
@@ -19,7 +23,7 @@ public class TestController {
 		public String testView() {
 			
 			
-			return "create_overseas_seller_account";
+			return "createSellerTaiwan";
 		}
 		
 		@GetMapping("/testmail")
@@ -28,5 +32,20 @@ public class TestController {
 			mail.sendMail("ooo", "kings86170@gmail.com", null, "測試郵件", "<a href='https://tw.yahoo.com/'>yahoo</a>", null, null);
 			
 			return "mail success";
+		}
+		@Autowired Base64ImgUtil imgUtil;
+		
+		@PostMapping(value="/testing")
+		@ResponseBody
+		public String testController(
+				@RequestParam(value="base64code", required=false) String base64code
+				) {
+		//	LogUtil.log.warn("...test base64code "+ base64code);
+			System.out.println("...test base64code "+ base64code);
+			
+			imgUtil.convertBase64ToFile(base64code, "/Users/boen/Desktop/test.jpg");
+			
+			
+			return "success";
 		}
 }
